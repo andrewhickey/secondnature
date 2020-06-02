@@ -1,8 +1,8 @@
 import React from 'react';
-import {Text} from 'react-native';
+import {RecipeList} from '../components';
 
 function RecipeListScreen() {
-  return <Text>RECIPE LIST</Text>;
+  return <RecipeList />;
 }
 
 export {RecipeListScreen};
