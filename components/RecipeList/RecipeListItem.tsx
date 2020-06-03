@@ -14,7 +14,7 @@ function RecipeListItem({recipe, index}: RecipeListItemProps) {
 
   const navigateToBookmark = useCallback(() => {
     navigation.navigate('RecipeDetail', {
-      recipeIndex: index,
+      index,
     });
   }, [index, navigation]);
 

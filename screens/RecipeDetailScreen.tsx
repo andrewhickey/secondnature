@@ -1,8 +1,23 @@
 import React from 'react';
-import {Text} from 'react-native';
+import {RecipeDetail} from '../components';
+import {recipes} from '../store';
+import {RecipesStackParamList} from '../navigationTypes';
+import {RouteProp} from '@react-navigation/core';
 
-function RecipeDetailScreen() {
-  return <Text>RECIPE DETAIL</Text>;
+type RecipeDetailScreenRouteProp = RouteProp<
+  RecipesStackParamList,
+  'RecipeDetail'
+>;
+
+type RecipeDetailScreenProps = {
+  route: RecipeDetailScreenRouteProp;
+};
+
+function RecipeDetailScreen({route}: RecipeDetailScreenProps) {
+  const {index} = route.params;
+  const recipe = recipes[index];
+
+  return <RecipeDetail recipe={recipe} />;
 }
 
 export {RecipeDetailScreen};

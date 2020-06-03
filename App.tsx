@@ -11,16 +11,20 @@ import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 import React from 'react';
 import {RecipeDetailScreen, RecipeListScreen} from './screens';
+import {RecipesStackParamList} from './navigationTypes';
 
-const Stack = createStackNavigator();
+const RecipesStack = createStackNavigator<RecipesStackParamList>();
 
 const App = () => {
   return (
     <NavigationContainer>
-      <Stack.Navigator>
-        <Stack.Screen name="RecipeList" component={RecipeListScreen} />
-        <Stack.Screen name="RecipeDetail" component={RecipeDetailScreen} />
-      </Stack.Navigator>
+      <RecipesStack.Navigator>
+        <RecipesStack.Screen name="RecipeList" component={RecipeListScreen} />
+        <RecipesStack.Screen
+          name="RecipeDetail"
+          component={RecipeDetailScreen}
+        />
+      </RecipesStack.Navigator>
     </NavigationContainer>
   );
 };
