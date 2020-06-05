@@ -5,6 +5,7 @@ import {Recipe} from '../../store';
 import {fonts} from '../../shared';
 import {ScrollView} from 'react-native-gesture-handler';
 import {StyleSheet, Text, View} from 'react-native';
+import {formatDuration} from 'date-fns';
 
 type RecipeDetailProps = {
   recipe: Recipe;
@@ -25,7 +26,9 @@ function RecipeDetail({recipe}: RecipeDetailProps) {
           {'  '}
           <Text>
             <FontAwesomeIcon name="clock-o" size={16} style={fonts.turquoise} />{' '}
-            {recipe.cookingTime}
+            {formatDuration({
+              minutes: recipe.cookingTime,
+            })}
           </Text>
         </Text>
 
