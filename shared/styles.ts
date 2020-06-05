@@ -20,6 +20,9 @@ const fonts = StyleSheet.create({
   lightTurquoise: {
     color: COLORS.LIGHT_TURQUOISE,
   },
+  orange: {
+    color: COLORS.ORANGE,
+  },
   lightOrange: {
     color: COLORS.LIGHT_ORANGE,
   },

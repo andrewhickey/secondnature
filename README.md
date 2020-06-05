@@ -1,4 +1,5 @@
-The font is Archivo, a free font which is similar to Mabry (the font on your website)
+- The font is Archivo, a free font which is similar to Mabry (the font on your website)
+- I've put the title underneath the picture because I think it looks better even though the designs have it above. In a real setting I'd run visual ideas like this past stakeholders
 
 TODO
 Update theme based on user pref

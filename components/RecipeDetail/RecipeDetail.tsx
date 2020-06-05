@@ -12,10 +12,10 @@ type RecipeDetailProps = {
 function RecipeDetail({recipe}: RecipeDetailProps) {
   return (
     <ScrollView>
+      <Image source={{uri: recipe.imageUrl}} style={styles.image} />
       <Text style={[fonts.bold, fonts.title, styles.textPadding]}>
         {recipe.title}
       </Text>
-      <Image source={{uri: recipe.imageUrl}} style={styles.image} />
       <View style={styles.textPadding}>
         <Text style={[fonts.bold, styles.metrics]}>
           <Text>
@@ -50,10 +50,9 @@ function RecipeDetail({recipe}: RecipeDetailProps) {
         <View style={styles.list}>
           {recipe.method.map((method, index) => (
             <View key={index} style={styles.listItem}>
-              <FontAwesomeIcon
-                name="circle"
-                style={[fonts.lightOrange, styles.bullet, styles.listItemText]}
-              />
+              <Text style={[fonts.orange, styles.bullet, styles.listItemText]}>
+                {index}.
+              </Text>
               <Text style={[fonts.regular, styles.listItemText]}>{method}</Text>
             </View>
           ))}
