@@ -35,8 +35,6 @@ const styles = StyleSheet.create({
     paddingTop: 2,
   },
   titleText: {
-    // fontFamily: 'AvenirLTStd-Medium',
-    // color: VERY_DARK_GREY,
     fontSize: 16,
     marginTop: 2,
   },

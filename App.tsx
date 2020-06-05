@@ -10,17 +10,23 @@
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 import React from 'react';
-import {RecipeDetailScreen, RecipeListScreen} from './screens';
+import {StyleSheet} from 'react-native';
 import {RecipesStackParamList} from './navigationTypes';
+import {RecipeDetailScreen, RecipeListScreen} from './screens';
 
 const RecipesStack = createStackNavigator<RecipesStackParamList>();
 
 const App = () => {
   return (
     <NavigationContainer>
-      <RecipesStack.Navigator>
-        <RecipesStack.Screen name="RecipeList" component={RecipeListScreen} />
+      <RecipesStack.Navigator screenOptions={{cardStyle: styles.card}}>
         <RecipesStack.Screen
+          options={{title: 'All recipes'}}
+          name="RecipeList"
+          component={RecipeListScreen}
+        />
+        <RecipesStack.Screen
+          options={{title: ''}}
           name="RecipeDetail"
           component={RecipeDetailScreen}
         />
@@ -28,5 +34,11 @@ const App = () => {
     </NavigationContainer>
   );
 };
+
+const styles = StyleSheet.create({
+  card: {
+    backgroundColor: '#fff',
+  },
+});
 
 export default App;

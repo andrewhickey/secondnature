@@ -1,9 +1,10 @@
 import React from 'react';
-import {Image, Text} from 'react-native-elements';
-import Icon from 'react-native-vector-icons/Feather';
+import {Image} from 'react-native-elements';
+import FontAwesomeIcon from 'react-native-vector-icons/FontAwesome';
 import {Recipe} from '../../store';
+import {fonts} from '../../shared';
 import {ScrollView} from 'react-native-gesture-handler';
-import {StyleSheet} from 'react-native';
+import {StyleSheet, Text, View} from 'react-native';
 
 type RecipeDetailProps = {
   recipe: Recipe;
@@ -11,27 +12,53 @@ type RecipeDetailProps = {
 function RecipeDetail({recipe}: RecipeDetailProps) {
   return (
     <ScrollView>
-      <Text h1>{recipe.title}</Text>
-      <Image source={{uri: recipe.imageUrl}} style={styles.image} />
-      <Text>
-        <Text>{recipe.servings} servings</Text>
-        <Text>
-          {recipe.cookingTime} <Icon name="clock" />
-        </Text>
+      <Text style={[fonts.bold, fonts.title, styles.textPadding]}>
+        {recipe.title}
       </Text>
-
-      <Text>Ingredients</Text>
-      {recipe.ingredients.map((ingredient, index) => (
-        <Text key={index}>
-          {ingredient.ingredient} - {ingredient.amount}
-          {ingredient.orAmount ? ` or ${ingredient.orAmount}` : ''}
+      <Image source={{uri: recipe.imageUrl}} style={styles.image} />
+      <View style={styles.textPadding}>
+        <Text style={[fonts.bold, styles.metrics]}>
+          <Text>
+            <FontAwesomeIcon name="cutlery" size={16} style={fonts.turquoise} />{' '}
+            {recipe.servings} servings
+          </Text>
+          {'  '}
+          <Text>
+            <FontAwesomeIcon name="clock-o" size={16} style={fonts.turquoise} />{' '}
+            {recipe.cookingTime}
+          </Text>
         </Text>
-      ))}
 
-      <Text>Method</Text>
-      {recipe.method.map((method, index) => (
-        <Text key={index}>{method}</Text>
-      ))}
+        <Text style={[fonts.regular, fonts.subtitle]}>Ingredients</Text>
+        <View style={styles.list}>
+          {recipe.ingredients.map((ingredient, index) => (
+            <View key={index} style={styles.listItem}>
+              <FontAwesomeIcon
+                name="circle"
+                style={[fonts.lightOrange, styles.bullet, styles.listItemText]}
+              />
+              <Text style={[fonts.regular, styles.listItemText]}>
+                {ingredient.amount}
+                {ingredient.orAmount ? ` or ${ingredient.orAmount}` : ''},
+                {ingredient.ingredient}
+              </Text>
+            </View>
+          ))}
+        </View>
+
+        <Text style={[fonts.regular, fonts.subtitle]}>Method</Text>
+        <View style={styles.list}>
+          {recipe.method.map((method, index) => (
+            <View key={index} style={styles.listItem}>
+              <FontAwesomeIcon
+                name="circle"
+                style={[fonts.lightOrange, styles.bullet, styles.listItemText]}
+              />
+              <Text style={[fonts.regular, styles.listItemText]}>{method}</Text>
+            </View>
+          ))}
+        </View>
+      </View>
     </ScrollView>
   );
 }
@@ -40,6 +67,28 @@ const styles = StyleSheet.create({
   image: {
     width: '100%',
     height: 300,
+  },
+  textPadding: {
+    paddingHorizontal: 15,
+  },
+  metrics: {
+    fontSize: 16,
+    marginTop: 8,
+    marginBottom: 16,
+  },
+  list: {
+    paddingHorizontal: 12,
+    marginBottom: 10,
+  },
+  listItem: {
+    flexDirection: 'row',
+    marginBottom: 4,
+  },
+  listItemText: {
+    lineHeight: 22,
+  },
+  bullet: {
+    marginRight: 6,
   },
 });
 
