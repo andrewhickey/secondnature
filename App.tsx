@@ -23,7 +23,7 @@ const App = () => {
       <RecipesStack.Navigator
         screenOptions={{
           cardStyle: styles.card,
-          headerTitleStyle: fonts.regular,
+          headerTitleStyle: [fonts.regular, fonts.turquoise],
           headerBackTitleStyle: fonts.regular,
           headerTintColor: COLORS.ORANGE,
         }}>
