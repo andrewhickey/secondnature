@@ -1,6 +1,6 @@
 import {useNavigation} from '@react-navigation/native';
 import React, {useCallback} from 'react';
-import {StyleSheet, TouchableOpacity, View, Image} from 'react-native';
+import {Image, StyleSheet, TouchableOpacity} from 'react-native';
 import {ListItem} from 'react-native-elements';
 import {Recipe} from 'store';
 import {fonts} from '../../shared';
