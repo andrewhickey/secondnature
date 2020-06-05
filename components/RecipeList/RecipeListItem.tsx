@@ -1,8 +1,9 @@
 import {useNavigation} from '@react-navigation/native';
 import React, {useCallback} from 'react';
-import {StyleSheet, TouchableOpacity, View} from 'react-native';
+import {StyleSheet, TouchableOpacity, View, Image} from 'react-native';
 import {ListItem} from 'react-native-elements';
 import {Recipe} from 'store';
+import {fonts} from '../../shared';
 
 interface RecipeListItemProps {
   recipe: Recipe;
@@ -24,8 +25,10 @@ function RecipeListItem({recipe, index}: RecipeListItemProps) {
       Component={TouchableOpacity}
       title={recipe.title}
       containerStyle={styles.itemContainer}
-      titleStyle={styles.titleText}
-      leftAvatar={<View />}
+      titleStyle={[fonts.regular, styles.title]}
+      leftAvatar={
+        <Image source={{uri: recipe.imageUrl}} style={styles.avatar} />
+      }
     />
   );
 }
@@ -34,9 +37,12 @@ const styles = StyleSheet.create({
   itemContainer: {
     paddingTop: 2,
   },
-  titleText: {
-    fontSize: 16,
-    marginTop: 2,
+  avatar: {
+    width: 92,
+    height: 92,
+  },
+  title: {
+    fontSize: 24,
   },
 });
 

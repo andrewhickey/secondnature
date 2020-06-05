@@ -27,7 +27,7 @@ const fonts = StyleSheet.create({
     color: COLORS.LIGHT_ORANGE,
   },
   title: {
-    fontSize: 36,
+    fontSize: 28,
     marginTop: 7,
     marginBottom: 10,
   },

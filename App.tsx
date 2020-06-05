@@ -13,20 +13,27 @@ import React from 'react';
 import {StyleSheet} from 'react-native';
 import {RecipesStackParamList} from './navigationTypes';
 import {RecipeDetailScreen, RecipeListScreen} from './screens';
+import {fonts, COLORS} from './shared';
 
 const RecipesStack = createStackNavigator<RecipesStackParamList>();
 
 const App = () => {
   return (
     <NavigationContainer>
-      <RecipesStack.Navigator screenOptions={{cardStyle: styles.card}}>
+      <RecipesStack.Navigator
+        screenOptions={{
+          cardStyle: styles.card,
+          headerTitleStyle: fonts.regular,
+          headerBackTitleStyle: fonts.regular,
+          headerTintColor: COLORS.ORANGE,
+        }}>
         <RecipesStack.Screen
-          options={{title: 'All recipes'}}
+          options={{title: 'Second Nature recipes'}}
           name="RecipeList"
           component={RecipeListScreen}
         />
         <RecipesStack.Screen
-          options={{title: ''}}
+          options={{title: '...'}}
           name="RecipeDetail"
           component={RecipeDetailScreen}
         />
