@@ -8,7 +8,6 @@ type RecipeListProps = {
   recipes: Recipe[];
 };
 function RecipeList({recipes}: RecipeListProps) {
-  console.log('RECIPES', recipes);
   const keyExtractor = useCallback((recipe: Recipe, index: number) => {
     // not great as a key, I guess we'd have an objectID from a real api
     return index.toString();
