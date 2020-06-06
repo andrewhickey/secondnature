@@ -1,8 +1,11 @@
+import {NavigationProp, RouteProp} from '@react-navigation/core';
+import {observer} from 'mobx-react-lite';
 import React, {useEffect} from 'react';
+import {Text} from 'react-native';
 import {RecipeDetail} from '../components';
-import {recipes} from '../store';
 import {RecipesStackParamList} from '../navigationTypes';
-import {RouteProp, NavigationProp} from '@react-navigation/core';
+import {useStores} from '../store';
+import {LoadingScreen} from './LoadingScreen';
 
 type RecipeDetailScreenRouteProp = RouteProp<
   RecipesStackParamList,
@@ -18,15 +21,35 @@ type RecipeDetailScreenProps = {
   navigation: RecipeDetailNavigationRouteProp;
 };
 
-function RecipeDetailScreen({route, navigation}: RecipeDetailScreenProps) {
-  const {index} = route.params;
-  const recipe = recipes[index];
+const RecipeDetailScreen = observer(
+  ({route, navigation}: RecipeDetailScreenProps) => {
+    const {recipeStore} = useStores();
+    const {index} = route.params;
+    const recipe = recipeStore.recipes[index];
 
-  useEffect(() => {
-    navigation.setOptions({title: recipe.title});
-  }, [recipe, navigation]);
+    useEffect(() => {
+      navigation.setOptions({title: recipe.title});
+    }, [recipe, navigation]);
 
-  return <RecipeDetail recipe={recipe} />;
-}
+    // make sure that data required for this screen is fetched
+    useEffect(() => {
+      recipeStore.fetch();
+    }, [recipeStore]);
+
+    if (recipeStore.fetching) {
+      return <LoadingScreen />;
+    }
+
+    if (recipeStore.errorMessage) {
+      return <Text>{recipeStore.errorMessage}</Text>;
+    }
+
+    if (!recipe) {
+      return <Text>404</Text>;
+    }
+
+    return <RecipeDetail recipe={recipe} />;
+  },
+);
 
 export {RecipeDetailScreen};

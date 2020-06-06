@@ -14,31 +14,34 @@ import {StyleSheet} from 'react-native';
 import {RecipesStackParamList} from './navigationTypes';
 import {RecipeDetailScreen, RecipeListScreen} from './screens';
 import {fonts, COLORS} from './shared';
+import {StoreProvider} from './store';
 
 const RecipesStack = createStackNavigator<RecipesStackParamList>();
 
 const App = () => {
   return (
-    <NavigationContainer>
-      <RecipesStack.Navigator
-        screenOptions={{
-          cardStyle: styles.card,
-          headerTitleStyle: [fonts.regular, fonts.turquoise],
-          headerBackTitleStyle: fonts.regular,
-          headerTintColor: COLORS.ORANGE,
-        }}>
-        <RecipesStack.Screen
-          options={{title: 'Second Nature recipes'}}
-          name="RecipeList"
-          component={RecipeListScreen}
-        />
-        <RecipesStack.Screen
-          options={{title: '...'}}
-          name="RecipeDetail"
-          component={RecipeDetailScreen}
-        />
-      </RecipesStack.Navigator>
-    </NavigationContainer>
+    <StoreProvider>
+      <NavigationContainer>
+        <RecipesStack.Navigator
+          screenOptions={{
+            cardStyle: styles.card,
+            headerTitleStyle: [fonts.regular, fonts.turquoise],
+            headerBackTitleStyle: fonts.regular,
+            headerTintColor: COLORS.ORANGE,
+          }}>
+          <RecipesStack.Screen
+            options={{title: 'Second Nature recipes'}}
+            name="RecipeList"
+            component={RecipeListScreen}
+          />
+          <RecipesStack.Screen
+            options={{title: '...'}}
+            name="RecipeDetail"
+            component={RecipeDetailScreen}
+          />
+        </RecipesStack.Navigator>
+      </NavigationContainer>
+    </StoreProvider>
   );
 };
 

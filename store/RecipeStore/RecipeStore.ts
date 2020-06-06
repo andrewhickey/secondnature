@@ -15,25 +15,29 @@ class RecipeStore {
   }
 
   fetch = async () => {
-    try {
-      this.fetching = true;
-      const response = await axios.get(this.endpoint);
-      this.recipes = response.data as Recipe[];
-      this.finished = true;
-    } catch (error) {
-      if (error.response) {
-        // The request was made and the server responded with a status code
-        // that falls out of the range of 2xx
-        this.errorMessage = error.response.data || error.errorMessage;
-      } else if (error.request) {
-        this.errorMessage = error.errorMessage;
-      } else {
-        // Something happened in setting up the request that triggered an Error
-        throw error;
+    if (!this.fetching || this.finished) {
+      try {
+        this.fetching = true;
+        const response = await axios.get(this.endpoint);
+        this.recipes = response.data.recipes as Recipe[];
+        this.finished = true;
+        this.errorMessage = '';
+      } catch (error) {
+        if (error.response) {
+          // The request was made and the server responded with a status code
+          // that falls out of the range of 2xx
+          this.errorMessage = error.response.data || error.errorMessage;
+        } else if (error.request) {
+          // there was no response from the server
+          this.errorMessage = error.errorMessage;
+        } else {
+          // Something happened in setting up the request that triggered an Error
+          throw error;
+        }
       }
-    }
 
-    this.fetching = false;
+      this.fetching = false;
+    }
   };
 }
 

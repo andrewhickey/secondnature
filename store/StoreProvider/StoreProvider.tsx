@@ -2,7 +2,10 @@ import React, {createContext, useContext, useState} from 'react';
 import {RecipeStore} from '../RecipeStore';
 
 const createStores = () => {
-  const recipeStore = new RecipeStore('http://localhost:3002/recipes');
+  // this should come from env variables, 12 factor app style
+  const recipeStore = new RecipeStore(
+    'https://www.secondnature.io/api/test-recipes',
+  );
 
   const stores = {
     recipeStore,
