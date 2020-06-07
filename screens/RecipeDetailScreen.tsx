@@ -33,6 +33,7 @@ const RecipeDetailScreen = observer(
 
     // make sure that data required for this screen is fetched
     useEffect(() => {
+      console.log('RECIPESTORE FINISHED', recipeStore.finished);
       recipeStore.fetch();
     }, [recipeStore]);
 

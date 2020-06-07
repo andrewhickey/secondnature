@@ -15,7 +15,7 @@ class RecipeStore {
   }
 
   fetch = async () => {
-    if (!this.fetching || this.finished) {
+    if (!this.fetching && !this.finished) {
       try {
         this.fetching = true;
         const response = await axios.get(this.endpoint);
