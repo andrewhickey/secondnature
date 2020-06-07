@@ -1,7 +1,5 @@
-<img src="./screenshots/Android-List.png" height="60" >
-<img src="./screenshots/Android-Detail.png" height="60" >
-<img src="./screenshots/iOS-List.png" height="60" >
-<img src="./screenshots/iOS-Detail.png" height="60" >
+<img src="./screenshots/Android-List.png" height="300" > <img src="./screenshots/Android-Detail.png" height="300" >
+<img src="./screenshots/iOS-List.png" height="300" > <img src="./screenshots/iOS-Detail.png" height="300" >
 
 ## Running the app
 
