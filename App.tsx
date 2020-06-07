@@ -13,7 +13,7 @@ import React from 'react';
 import {StyleSheet} from 'react-native';
 import {RecipesStackParamList} from './navigationTypes';
 import {RecipeDetailScreen, RecipeListScreen} from './screens';
-import {fonts, COLORS} from './shared';
+import {COLORS, fonts} from './shared';
 import {StoreProvider} from './store';
 
 const RecipesStack = createStackNavigator<RecipesStackParamList>();

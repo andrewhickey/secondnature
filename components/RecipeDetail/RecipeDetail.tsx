@@ -1,11 +1,11 @@
-import React from 'react';
-import {Image} from 'react-native-elements';
-import FontAwesomeIcon from 'react-native-vector-icons/FontAwesome';
-import {Recipe} from '../../store';
-import {fonts} from '../../shared';
-import {ScrollView} from 'react-native-gesture-handler';
-import {StyleSheet, Text, View} from 'react-native';
 import {formatDuration} from 'date-fns';
+import React from 'react';
+import {StyleSheet, Text, View} from 'react-native';
+import {Image} from 'react-native-elements';
+import {ScrollView} from 'react-native-gesture-handler';
+import FontAwesomeIcon from 'react-native-vector-icons/FontAwesome';
+import {fonts} from '../../shared';
+import {Recipe} from '../../store';
 
 type RecipeDetailProps = {
   recipe: Recipe;
