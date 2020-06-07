@@ -1,7 +1,7 @@
-![Android list](./screenshots/Android-List.png?raw=true)
-![Android detail](./screenshots/Android-Detail.png?raw=true)
-![iOS list](./screenshots/iOS-List.png?raw=true)
-![iOS detail](./screenshots/iOS-Detail.png?raw=true)
+<img src="./screenshots/Android-List.png" height="60" >
+<img src="./screenshots/Android-Detail.png" height="60" >
+<img src="./screenshots/iOS-List.png" height="60" >
+<img src="./screenshots/iOS-Detail.png" height="60" >
 
 ## Running the app
 
